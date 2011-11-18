@@ -1,0 +1,29 @@
+<!-- Generator: GNU source-highlight 3.1.4
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><b><font color="#0000FF">public</font></b> <b><font color="#0000FF">class</font></b> <font color="#008080">Main</font> <font color="#FF0000">{</font>
+	<b><font color="#0000FF">public</font></b> <font color="#009900">void</font> <b><font color="#000000">a</font></b><font color="#990000">()</font> <font color="#FF0000">{</font>
+	<font color="#008080">Database</font> db <font color="#990000">=</font> Database<font color="#990000">.</font><b><font color="#000000">loadDatabase</font></b><font color="#990000">(</font>“mydb<font color="#990000">.</font>gdf”<font color="#990000">);</font>
+	<font color="#008080">Node</font> me <font color="#990000">=</font> db<font color="#990000">.</font><b><font color="#000000">getNode</font></b><font color="#990000">(</font><font color="#993399">0</font><font color="#990000">);</font>
+	<i><font color="#9A1900">//. . .</font></i>
+	<font color="#008080">Transaction</font> t <font color="#990000">=</font> <b><font color="#0000FF">new</font></b> <b><font color="#000000">Transaction</font></b><font color="#990000">();</font>
+	t<font color="#990000">.</font><b><font color="#000000">setRootNode</font></b><font color="#990000">(</font>me<font color="#990000">);</font>
+	t<font color="#990000">.</font><b><font color="#000000">addQuery</font></b><font color="#990000">(</font><font color="#993399">1</font><font color="#990000">,</font> db<font color="#990000">.</font><b><font color="#000000">getEdgeType</font></b><font color="#990000">(</font>MySchema<font color="#990000">.</font>EDGE_FOLLOWS<font color="#990000">));</font>
+	t<font color="#990000">.</font><b><font color="#000000">addQuery</font></b><font color="#990000">(</font><font color="#993399">1</font><font color="#990000">,</font> db<font color="#990000">.</font><b><font color="#000000">getEdgeType</font></b><font color="#990000">(</font>MySchema<font color="#990000">.</font>EDGE_LIKE<font color="#990000">));</font>
+	t<font color="#990000">.</font><b><font color="#000000">addQuery</font></b><font color="#990000">(</font><font color="#993399">2</font><font color="#990000">,</font> db<font color="#990000">.</font><b><font color="#000000">getEdgeType</font></b><font color="#990000">(</font>MySchema<font color="#990000">.</font>EDGE_WATCHED<font color="#990000">));</font>
+	t<font color="#990000">.</font><b><font color="#000000">minus</font></b><font color="#990000">(</font><font color="#993399">1</font><font color="#990000">,</font> <font color="#993399">2</font><font color="#990000">);</font>
+	t<font color="#990000">.</font><b><font color="#000000">execute</font></b><font color="#990000">();</font>
+
+	<b><font color="#0000FF">if</font></b> <font color="#990000">(</font>t<font color="#990000">.</font><b><font color="#000000">isSuccessfull</font></b><font color="#990000">())</font> <font color="#FF0000">{</font>
+	    <font color="#008080">NodeSet</font> result <font color="#990000">=</font> t<font color="#990000">.</font><b><font color="#000000">getResultSet</font></b><font color="#990000">();</font>
+	    <i><font color="#9A1900">//. . .</font></i>
+	<font color="#FF0000">}</font> <b><font color="#0000FF">else</font></b> <font color="#FF0000">{</font>
+	    System<font color="#990000">.</font>out<font color="#990000">.</font><b><font color="#000000">println</font></b><font color="#990000">(</font><font color="#FF0000">"Transaction wasn't executed!"</font><font color="#990000">);</font>
+	<font color="#FF0000">}</font>
+
+	<i><font color="#9A1900">//. . .</font></i>
+	db<font color="#990000">.</font><b><font color="#000000">close</font></b><font color="#990000">();</font>	<i><font color="#9A1900">// Close database after using</font></i>
+	<font color="#FF0000">}</font>
+<font color="#FF0000">}</font>
+</tt></pre>
